@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Test",
+    "category": "development",
+    "description": "Test",
+    "price": 4,
+    "tags": [
+      "test"
+    ],
+    "date": "18.05.2025",
+    "backgroundImage": "/uploads/2.jpg",
+    "id": "ec9da5ac-13ea-4f62-bba3-efd772c85e02"
+  },
+  {
+    "title": "Work",
+    "category": "development",
+    "description": "Work",
+    "price": 3,
+    "tags": [
+      "test"
+    ],
+    "date": "18.05.2025",
+    "backgroundImage": "/uploads/1.jpg",
+    "id": "ec9da5ac-13ea-4f62-bba3-efd772c85e03"
+  },
+  {
+    "title": "Test",
+    "category": "development",
+    "description": "Test",
+    "price": 4,
+    "tags": [
+      "test"
+    ],
+    "date": "18.05.2025",
+    "backgroundImage": "/uploads/3.jpg",
+    "id": "ec9da5ac-13ea-4f62-bba3-efd772c85e0b"
+  }
+]

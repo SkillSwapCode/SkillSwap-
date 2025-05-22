@@ -1,8 +1,23 @@
 .container {
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #f4c3f3, #ffdfc1);
-  }
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.cardWrapper {
+  position: absolute;
+  width: 90%;
+  max-width: 420px;
+  touch-action: pan-y;
+}
+
+.swipeCard {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  touch-action: pan-y;
+  cursor: grab;
+}
