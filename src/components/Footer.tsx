@@ -1,13 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { FaPlusCircle, FaCheckCircle, FaGripLines } from 'react-icons/fa';
-import { useWallet } from '@solana/wallet-adapter-react';
+import { FaPlusCircle, FaGripLines } from 'react-icons/fa';
 import styles from '@/styles/Footer.module.css'
+import WalletIconButton from './WalletIconButton';
 
 export default function Footer() {
-  const { connected } = useWallet();
 
   return (
     <footer className={styles.footer}>
@@ -19,10 +17,7 @@ export default function Footer() {
         <FaGripLines size={28} />
       </Link>
 
-      <div className={styles.walletButtonWrapper}>
-        <WalletMultiButton className={styles.walletButton} />
-        {connected && <FaCheckCircle className={styles.connectedIcon} size={18} />}
-      </div>
+      <WalletIconButton />
     </footer>
   );
 }
