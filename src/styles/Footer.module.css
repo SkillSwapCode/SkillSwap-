@@ -1,0 +1,62 @@
+.footer {
+  position: fixed;
+  padding: 15px;
+  bottom: 0;
+  width: 100%;
+  height: 64px;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 20;
+}
+
+.iconButton {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swipePlaceholder {
+  flex-grow: 1;
+}
+
+.walletButtonWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.walletButton {
+  border-radius: 10px !important;
+  padding: 6px 12px !important;
+  font-size: 14px !important;
+}
+
+.connectedIcon {
+  color: #4ade80;
+  position: absolute;
+  top: -4px;
+  right: -10px;
+}
+
+.swipeButton {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+  margin: 0 12px;
+  transition: opacity 0.2s ease;
+}
+
+.swipeButton:hover {
+  opacity: 0.7;
+}
