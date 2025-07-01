@@ -15,14 +15,14 @@ export default function ServiceForm() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-        setImageFile(file);
-        setImagePreview(URL.createObjectURL(file));
+      setImageFile(file);
+      setImagePreview(URL.createObjectURL(file));
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     const serviceData = {
       title,
       category,
@@ -30,36 +30,36 @@ export default function ServiceForm() {
       price: Number(reward),
       tags: tags.split(',').map((tag) => tag.trim()),
       date: new Date().toLocaleDateString(),
-      backgroundImage: '', 
+      backgroundImage: '',
     };
-  
+
     try {
       if (imageFile) {
         const formData = new FormData();
         formData.append('image', imageFile);
-  
+
         const uploadRes = await fetch('/api/upload', {
           method: 'POST',
           body: formData,
         });
-  
-        if (!uploadRes.ok) throw new Error('Ошибка при загрузке изображения');
+
+        if (!uploadRes.ok) throw new Error('Image upload failed');
         const uploadResult = await uploadRes.json();
         serviceData.backgroundImage = uploadResult.url;
       }
-  
+
       const res = await fetch('/api/services', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(serviceData),
       });
-  
+
       if (!res.ok) {
         const errorText = await res.text();
-        throw new Error(`Ошибка сервера: ${res.status} ${errorText}`);
+        throw new Error(`Server error: ${res.status} ${errorText}`);
       }
-  
-      alert('✅ Услуга опубликована!');
+
+      alert('Service published successfully!');
       setTitle('');
       setCategory('design');
       setDescription('');
@@ -69,17 +69,17 @@ export default function ServiceForm() {
       setImagePreview(null);
     } catch (err: any) {
       console.error(err);
-      alert('❌ Ошибка: ' + err.message);
+      alert('Error: ' + err.message);
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <h2 className={styles.title}>🛠️ Опубликовать услугу</h2>
+      <h2 className={styles.title}>Publish Your Service</h2>
 
       <input
         type="text"
-        placeholder="Название услуги"
+        placeholder="Service title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         className={styles.input}
@@ -89,16 +89,16 @@ export default function ServiceForm() {
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className={styles.input}
+        className={styles.select}
       >
-        <option value="design">🎨 Дизайн</option>
-        <option value="development">💻 Разработка</option>
-        <option value="writing">✍️ Копирайтинг</option>
-        <option value="marketing">📢 Маркетинг</option>
+        <option value="design">Design</option>
+        <option value="development">Development</option>
+        <option value="writing">Copywriting</option>
+        <option value="marketing">Marketing</option>
       </select>
 
       <textarea
-        placeholder="Описание"
+        placeholder="Service description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         className={styles.textarea}
@@ -108,7 +108,7 @@ export default function ServiceForm() {
 
       <input
         type="number"
-        placeholder="Вознаграждение ($SKILL)"
+        placeholder="Reward (in $SKILL)"
         value={reward}
         onChange={(e) => setReward(e.target.value)}
         className={styles.input}
@@ -117,20 +117,21 @@ export default function ServiceForm() {
 
       <input
         type="text"
-        placeholder="Теги (через запятую)"
+        placeholder="Tags (comma separated)"
         value={tags}
         onChange={(e) => setTags(e.target.value)}
         className={styles.input}
       />
-      <label className={styles.label}>Изображение услуги:</label>
+
+      <label className={styles.label}>Cover image:</label>
       <input type="file" accept="image/*" onChange={handleFileChange} />
 
       {imagePreview && (
-        <img src={imagePreview} alt="Предпросмотр" className={styles.preview} />
+        <img src={imagePreview} alt="Preview" className={styles.preview} />
       )}
 
       <button type="submit" className={styles.button}>
-        🚀 Опубликовать
+        Publish
       </button>
     </form>
   );
